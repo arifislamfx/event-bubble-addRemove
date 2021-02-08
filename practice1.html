@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun with event Handler</title>
+    <style>
+        section h3 {
+            text-align: center;
+            margin-top: 80px;
+            margin-left: -20px;
+            font-size: 30px;
+            align-items: center;
+        }
+       
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+        #myList {
+            cursor: pointer;
+        }
+        li {
+            line-height: 30px;
+        }
+        li:hover {
+            text-decoration: underline;
+            color: red;
+        }
+        #addItem {
+           margin-left: 10px;
+           margin-top: 10px;
+           padding: 10px;
+           margin: 10px;
+          background-color: tomato;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 18px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h3>Exploring Event bubble </h3>
+            <div id="container">
+                <ul id="myList">
+                    <li class="item">Lorem ipsum dolor sit amet.</li>
+                    <li class="item">Aperiam reiciendis nemo ipsa modi!</li>
+                    <li class="item">Praesentium deleniti voluptate incidunt fugiat.</li>
+                    <li class="item">Tenetur doloremque hic consectetur corporis!</li>
+                    <li class="item">Inventore iusto dolores laborum voluptas.</li>
+                </ul>
+                <button id="addItem">Add New Item</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        //add item list by button
+        const btnClick = document.getElementById('addItem');
+        btnClick.addEventListener('click', function(e) {
+            const parentList = document.getElementById('myList');
+            const addList = document.createElement('li');
+            addList.innerText = "Hey this list item added by button"
+            parentList.appendChild(addList);
+        });
+
+        //remove list item by button
+        const btnRemove = document.getElementById('myList');
+        btnRemove.addEventListener('click', function(e) {
+            e.target.parentNode.removeChild(e.target);
+        })
+    </script>
+</body>
+</html>
